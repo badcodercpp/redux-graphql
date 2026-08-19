@@ -1,4 +1,4 @@
-# redux-graphql
+# redux-graphql-native
 
 A light, fast JavaScript library built for React Native. It handles private Apollo Client channels, WebSockets, streaming via RxJS, and native authentication states.
 
@@ -16,7 +16,7 @@ A light, fast JavaScript library built for React Native. It handles private Apol
 Install the package and its required peer dependencies inside your host React Native project:
 
 ```bash
-npm install redux-graphql @apollo/client graphql graphql-ws rxjs @reduxjs/toolkit react-redux
+npm install redux-graphql-native @apollo/client graphql graphql-ws rxjs @reduxjs/toolkit react-redux
 ```
 
 ---
@@ -30,12 +30,13 @@ Add the library's built-in authentication reducer to your host application's roo
 ```typescript
 // store.ts (Host App)
 import { configureStore } from "@reduxjs/toolkit";
-import { reduxGraphqlReducer, ClientCommunicators } from "redux-graphql";
+import { reduxGraphqlReducer, ClientCommunicators } from "redux-graphql-native";
 
 export const store = configureStore({
   reducer: {
     // You can name this key anything, but your class expects to read the token from here
-    myLibAuth: reduxGraphqlReducer,
+    // keep same name as given in example
+    reduxGraphqlAuth: reduxGraphqlReducer,
     // ... your other app reducers
   },
 });
@@ -77,7 +78,7 @@ You do not need to push tokens manually into the network layer. Dispatching the 
 
 ```typescript
 import { useDispatch } from "react-redux";
-import { setReduxGraphqlAuthTokens } from "redux-graphql";
+import { setReduxGraphqlAuthTokens } from "redux-graphql-native";
 
 const dispatch = useDispatch();
 
@@ -94,7 +95,7 @@ import { useDispatch } from "react-redux";
 import {
   resetReduxGraphqlAuthTokens,
   ClientCommunicators,
-} from "redux-graphql";
+} from "redux-graphql-native";
 
 const dispatch = useDispatch();
 
@@ -111,11 +112,11 @@ const handleLogout = async () => {
 
 ## 🚀 Creating Async Thunk Action Creators
 
-Here is how you can build fully type-controlled asynchronous actions using `redux-graphql` mutation accessor classes inside your host application setup:
+Here is how you can build fully type-controlled asynchronous actions using `redux-graphql-native` mutation accessor classes inside your host application setup:
 
 ```typescript
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { GuardedMutationAccessor } from "redux-graphql";
+import { GuardedMutationAccessor } from "redux-graphql-native";
 import { INITIATE_LOGOUT_ACTION } from "@/state/thunkTypes";
 
 // Local GraphQL Documents and Types sitting inside the host application

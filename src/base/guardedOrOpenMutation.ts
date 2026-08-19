@@ -10,9 +10,9 @@ export class GuardedMutationAccessor<
     variables: TVariables,
     targetGraphQL: TypedDocumentNode<TData, ReduxGraphqlExactType<TVariables>>,
   ) {
-    const graphqlGuardedClient = await this.getGuardedClient();
+    const graphqlGuardedOrOpenClient = await this.getGuardedOrOpenClient();
 
-    const response = await graphqlGuardedClient.mutate({
+    const response = await graphqlGuardedOrOpenClient.mutate({
       mutation: targetGraphQL,
       variables,
     });

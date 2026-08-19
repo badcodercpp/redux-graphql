@@ -16,7 +16,7 @@ export abstract class BaseGraphQLAccessor<
   /**
    * Retrieves the authenticated Apollo Client instance.
    */
-  protected async getGuardedClient(): Promise<ApolloClient> {
+  protected async getGuardedOrOpenClient(): Promise<ApolloClient> {
     return await ClientCommunicators.instance.getGuardedOrOpenClient();
   }
 

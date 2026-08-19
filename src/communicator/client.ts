@@ -49,7 +49,7 @@ export class ClientCommunicators {
     }
     // Access the state dynamically. Adjust the key names to match your final store setup.
     const state = this.store.getState();
-    return state.myLibAuth?.accessToken || "";
+    return state.reduxGraphqlAuth?.accessToken || "";
   }
 
   public getGuardedOrOpenClient() {
