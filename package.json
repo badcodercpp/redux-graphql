@@ -1,0 +1,54 @@
+{
+  "name": "redux-graphql",
+  "version": "1.0.0",
+  "description": "lib to manage graphql query and mutation via redux with full type control",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clear": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@apollo/client": "^4.2.12",
+    "@reduxjs/toolkit": "^2.12.0",
+    "graphql": "^17.0.2",
+    "graphql-ws": "^6.2.1",
+    "react": ">=18.0.0",
+    "react-redux": ">=9.0.0",
+    "rxjs": "^7.8.2",
+    "apollo-upload-client": "^14.1.1"
+  },
+  "devDependencies": {
+    "@apollo/client": "^4.2.12",
+    "@reduxjs/toolkit": "^2.12.0",
+    "@types/node": "^26.2.0",
+    "graphql": "^17.0.2",
+    "graphql-ws": "^6.2.1",
+    "react": "^18.0.0",
+    "react-redux": "^9.0.0",
+    "rxjs": "^7.8.2",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "apollo-upload-client": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badcodercpp/redux-graphql.git"
+  },
+  "keywords": [
+    "redux",
+    "graphql",
+    "typescript",
+    "react-native"
+  ],
+  "author": "badcoder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/badcodercpp/redux-graphql/issues"
+  },
+  "homepage": "https://github.com/badcodercpp/redux-graphql#readme"
+}

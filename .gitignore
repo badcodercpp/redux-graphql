@@ -1,0 +1,33 @@
+# 📁 Dependencies
+node_modules/
+.pnpm-store/
+
+# 🏗️ Build Outputs
+dist/
+lib/
+out/
+
+# 🛠️ Development & IDE logs
+.env
+.env.local
+.env.*.local
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# 📱 Mobile specific artifacts (if running tests)
+.expo/
+*.jks
+*.p10
+*.p7b
+*.p7c
+*.pfx
+*.pem
+*.pkcs12
+*.pfxc
+
+# 🖥️ System Overrides
+.DS_Store
+Thumbs.db
