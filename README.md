@@ -109,32 +109,47 @@ const handleLogout = async () => {
 
 ---
 
-## 📡 Executing Network Requests
+## 🚀 Creating Async Thunk Action Creators
 
-Grab the shared authenticated or open client directly inside your hooks, components, or services.
+Here is how you can build fully type-controlled asynchronous actions using `redux-graphql` mutation accessor classes inside your host application setup:
 
 ```typescript
-import { ClientCommunicators } from "redux-graphql";
-import { gql } from "@apollo/client";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { GuardedMutationAccessor } from "redux-graphql";
+import { INITIATE_LOGOUT_ACTION } from "@/state/thunkTypes";
 
-// Fetch the global client reference
-const client = ClientCommunicators.instance.getGuardedOrOpenClient();
+// Local GraphQL Documents and Types sitting inside the host application
+import {
+  LogoutMutation,
+  LogoutMutationVariables,
+} from "@/__generated__/graphql";
+import { INITIATE_LOGOUT } from "@/graphql-communicator";
 
-// Run a standard query
-const FETCH_PROFILE = gql`
-  query GetUserProfile {
-    profile {
-      id
-      name
-      email
+export const initiateLogout = createAsyncThunk(
+  INITIATE_LOGOUT_ACTION,
+  async () => {
+    // 1. Instantiating a fully typed mutation channel mapping from the library
+    const logoutAccessor = new GuardedMutationAccessor<
+      LogoutMutationVariables,
+      LogoutMutation
+    >();
+
+    // 2. Run the secure channel execution pipeline using the host app's mutation string/node
+    const initiateLogoutOutput = await logoutAccessor.execute(
+      {},
+      INITIATE_LOGOUT,
+    );
+
+    // 3. Gracefully manage runtime errors
+    if (initiateLogoutOutput.error) {
+      throw new Error(
+        initiateLogoutOutput.error?.message ?? "Something went wrong",
+      );
     }
-  }
-`;
 
-client
-  .query({ query: FETCH_PROFILE })
-  .then((response) => console.log(response.data))
-  .catch((error) => console.error(error));
+    return initiateLogoutOutput.data?.logout;
+  },
+);
 ```
 
 ---
