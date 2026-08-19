@@ -8,10 +8,10 @@ let config: ReduxGraphqlConfig = {
 };
 
 // function the host React Native app can call when it starts up
-export const initializeReduxGraphqlConfig = (
-  reduxGraphqlConfig: ReduxGraphqlConfig,
+export const initializeReduxGraphqlNativeConfig = (
+  reduxGraphqlNativeConfig: ReduxGraphqlConfig,
 ) => {
-  config = { ...config, ...reduxGraphqlConfig };
+  config = { ...config, ...reduxGraphqlNativeConfig };
 };
 
 // Export active config
