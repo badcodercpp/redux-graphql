@@ -23,6 +23,21 @@ npm install redux-graphql-native @apollo/client graphql graphql-ws rxjs @reduxjs
 
 ## 🛠️ Step-by-Step Integration
 
+### 0. Environment Configuration
+
+Because environment variables can be handled differently across React Native and Expo setups, you must initialize the library endpoints at your application's early startup entry point (such as your index file or root `App.tsx`).
+
+```typescript
+import { initializeReduxGraphqlConfig } from "redux-graphql-native";
+
+// Configure your endpoints using your application environment variables
+initializeReduxGraphqlConfig({
+  ENDPOINT: process.env.EXPO_PUBLIC_API_URL || "http://192.168.31.125:3000",
+  WS_ENDPOINT: process.env.EXPO_PUBLIC_WS_URL || "ws://192.168.31.125:3000",
+  API_PREFIX: "graphql",
+});
+```
+
 ### 1. Register the Redux Reducer
 
 Add the library's built-in authentication reducer to your host application's root Redux store.
