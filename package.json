@@ -1,6 +1,6 @@
 {
   "name": "redux-graphql-native",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "lib to manage graphql query and mutation via redux with full type control",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
