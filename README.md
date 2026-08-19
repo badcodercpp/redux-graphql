@@ -175,14 +175,11 @@ export const initiateLogout = createAsyncThunk(
 // for query
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { GuardedMutationAccessor } from "redux-graphql-native";
+import { GuardedOrOpenQueryAccessor } from "redux-graphql-native";
 import { INITIATE_LOGOUT_ACTION } from "@/state/thunkTypes";
 
 // Local GraphQL Documents and Types sitting inside the host application
-import {
-  LogoutMutation,
-  LogoutMutationVariables,
-} from "@/__generated__/graphql";
+import { LogoutQuery, LogoutQueryVariables } from "@/__generated__/graphql";
 
 // this is your action type and this is from your host app
 import { INITIATE_LOGOUT } from "@/graphql-communicator";
