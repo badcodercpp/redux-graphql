@@ -2,7 +2,7 @@ import { BaseGraphQLAccessor } from "./contracts";
 import { ReduxGraphqlExactType } from "../types/exact";
 import { TypedDocumentNode } from "@apollo/client";
 
-export class GuardedOrOpenMutationAccessor<
+export class GuardedOrOpenQueryAccessor<
   TVariables extends { [key: string]: unknown },
   TData,
 > extends BaseGraphQLAccessor<TVariables, TData> {
@@ -12,8 +12,8 @@ export class GuardedOrOpenMutationAccessor<
   ) {
     const graphqlGuardedOrOpenClient = await this.getGuardedOrOpenClient();
 
-    const response = await graphqlGuardedOrOpenClient.mutate({
-      mutation: targetGraphQL,
+    const response = await graphqlGuardedOrOpenClient.query({
+      query: targetGraphQL,
       variables,
     });
     return response;

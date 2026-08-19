@@ -130,6 +130,7 @@ const handleLogout = async () => {
 Here is how you can build fully type-controlled asynchronous actions using `redux-graphql-native` mutation accessor classes inside your host application setup:
 
 ```typescript
+// for mutation
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { GuardedMutationAccessor } from "redux-graphql-native";
 import { INITIATE_LOGOUT_ACTION } from "@/state/thunkTypes";
@@ -157,6 +158,49 @@ export const initiateLogout = createAsyncThunk(
       {},
 
       // this is your mutation or query and this also sits in your app
+      INITIATE_LOGOUT,
+    );
+
+    // 3. Gracefully manage runtime errors
+    if (initiateLogoutOutput.error) {
+      throw new Error(
+        initiateLogoutOutput.error?.message ?? "Something went wrong",
+      );
+    }
+
+    return initiateLogoutOutput.data?.logout;
+  },
+);
+
+// for query
+
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { GuardedMutationAccessor } from "redux-graphql-native";
+import { INITIATE_LOGOUT_ACTION } from "@/state/thunkTypes";
+
+// Local GraphQL Documents and Types sitting inside the host application
+import {
+  LogoutMutation,
+  LogoutMutationVariables,
+} from "@/__generated__/graphql";
+
+// this is your action type and this is from your host app
+import { INITIATE_LOGOUT } from "@/graphql-communicator";
+
+export const initiateLogout = createAsyncThunk(
+  INITIATE_LOGOUT_ACTION,
+  async () => {
+    // 1. Instantiating a fully typed query channel mapping from the library
+    const logoutAccessor = new GuardedOrOpenQueryAccessor<
+      LogoutQueryVariables,
+      LogoutQuery
+    >();
+
+    // 2. Run the secure channel execution pipeline using the host app's query string/node
+    const initiateLogoutOutput = await logoutAccessor.execute(
+      {},
+
+      // this is your query or query and this also sits in your app
       INITIATE_LOGOUT,
     );
 
