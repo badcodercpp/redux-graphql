@@ -123,6 +123,8 @@ import {
   LogoutMutation,
   LogoutMutationVariables,
 } from "@/__generated__/graphql";
+
+// this is your action type and this is from your host app
 import { INITIATE_LOGOUT } from "@/graphql-communicator";
 
 export const initiateLogout = createAsyncThunk(
@@ -137,6 +139,8 @@ export const initiateLogout = createAsyncThunk(
     // 2. Run the secure channel execution pipeline using the host app's mutation string/node
     const initiateLogoutOutput = await logoutAccessor.execute(
       {},
+
+      // this is your mutation or query and this also sits in your app
       INITIATE_LOGOUT,
     );
 
