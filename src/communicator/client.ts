@@ -59,7 +59,7 @@ export class ClientCommunicators {
 
     const wsLink = new GraphQLWsLink(
       createClient({
-        url: `${this.communicatorConfig.WS_ENDPOINT}/${this.communicatorConfig.API_PREFIX}`,
+        url: `${this.communicatorConfig.REDUX_GRAPGQL_WS_ENDPOINT}/${this.communicatorConfig.REDUX_GRAPGQL_API_PREFIX}`,
         retryAttempts: Infinity,
         shouldRetry: () => true,
         connectionParams: async () => {
@@ -97,7 +97,7 @@ export class ClientCommunicators {
     });
 
     const uploadLink = createUploadLink({
-      uri: `${this.communicatorConfig.ENDPOINT}/${this.communicatorConfig.API_PREFIX}`,
+      uri: `${this.communicatorConfig.REDUX_GRAPGQL_ENDPOINT}/${this.communicatorConfig.REDUX_GRAPGQL_API_PREFIX}`,
       headers: {
         "apollo-require-preflight": "true",
       },

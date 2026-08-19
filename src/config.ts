@@ -2,9 +2,9 @@ import { ReduxGraphqlConfig } from "./types/envTypes";
 
 // local reference inside library
 let config: ReduxGraphqlConfig = {
-  ENDPOINT: "http://192.168.31.125:3000",
-  WS_ENDPOINT: "ws://192.168.31.125:3000",
-  API_PREFIX: "graphql",
+  REDUX_GRAPGQL_ENDPOINT: "http://192.168.31.125:3000",
+  REDUX_GRAPGQL_WS_ENDPOINT: "ws://192.168.31.125:3000",
+  REDUX_GRAPGQL_API_PREFIX: "graphql",
 };
 
 // function the host React Native app can call when it starts up

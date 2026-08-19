@@ -32,9 +32,10 @@ import { initializeReduxGraphqlConfig } from "redux-graphql-native";
 
 // Configure your endpoints using your application environment variables
 initializeReduxGraphqlConfig({
-  ENDPOINT: process.env.EXPO_PUBLIC_API_URL || "http://192.168.31.125:3000",
-  WS_ENDPOINT: process.env.EXPO_PUBLIC_WS_URL || "ws://192.168.31.125:3000",
-  API_PREFIX: "graphql",
+  ENDPOINT: process.env.REDUX_GRAPGQL_ENDPOINT || "http://192.168.31.125:3000",
+  WS_ENDPOINT:
+    process.env.REDUX_GRAPGQL_WS_ENDPOINT || "ws://192.168.31.125:3000",
+  API_PREFIX: process.env.REDUX_GRAPGQL_API_PREFIX || "graphql",
 });
 ```
 

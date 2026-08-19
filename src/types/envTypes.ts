@@ -1,5 +1,5 @@
 export interface ReduxGraphqlConfig {
-  ENDPOINT: string;
-  WS_ENDPOINT: string;
-  API_PREFIX: string;
+  REDUX_GRAPGQL_ENDPOINT: string;
+  REDUX_GRAPGQL_WS_ENDPOINT: string;
+  REDUX_GRAPGQL_API_PREFIX: string;
 }
